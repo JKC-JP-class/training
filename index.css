@@ -166,3 +166,16 @@ h4 {
 	font-size: 14px;
 }
 }
+
+.layout_button_01 {
+    font-size: 25px;
+    width: 400px;
+    height: 50px;
+    clear: right;
+    display: inline;
+    color: #5c3824;
+    margin: 15px;
+    border-radius: 8px;
+    text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.66);
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.28);
+}
