@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Japanese Typing Trainer (Romaji)</title>
+  <style>
+    body { 
+      font-family: sans-serif; 
+      text-align: center; 
+      background: linear-gradient(to right, #fbc2eb, #a6c1ee); 
+      height: 100vh; 
+      margin: 0;
+      display: flex; 
+      flex-direction: column; 
+      justify-content: center; 
+      align-items: center; 
+      padding: 10px;
+    }
+    h1 { font-size: 1.5em; margin-bottom: 10px; }
+    #word { font-size: 2em; margin: 20px; }
+    #message { margin: 10px; font-size: 1.2em; }
+    input { 
+      padding: 12px; 
+      font-size: 1.2em; 
+      width: 80%; 
+      max-width: 300px; 
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      text-align: center;
+    }
+    button { 
+      margin-top: 12px; 
+      padding: 12px 20px; 
+      font-size: 1.2em; 
+      border: none; 
+      border-radius: 8px;
+      background: #4a6cf7; 
+      color: white;
+      width: 80%;
+      max-width: 300px;
+    }
+    #score { margin-top: 20px; font-size: 1.5em; }
+  </style>
+</head>
+<body>
+  <h1>Japanese Typing Trainer (Romaji)</h1>
+  <p id="message">Type the Romaji for the Japanese word you see!</p>
+  <div id="word"></div>
+  <input type="text" id="input" placeholder="Type in Romaji">
+  <button onclick="checkAnswer()">Check</button>
+  <div id="score">Score: 0</div>
+
+  <script>
+    const words = [
+      { jp: "こんにちは", romaji: "konnichiwa" },
+      { jp: "ありがとう", romaji: "arigatou" },
+      { jp: "さようなら", romaji: "sayounara" },
+      { jp: "日本", romaji: "nihon" },
+      { jp: "楽しい", romaji: "tanoshii" },
+      { jp: "勉強", romaji: "benkyou" },
+      { jp: "友達", romaji: "tomodachi" },
+      { jp: "美味しい", romaji: "oishii" },
+      { jp: "早い", romaji: "hayai" }
+    ];
+
+    let currentWord = {};
+    let score = 0;
+
+    function nextWord() {
+      currentWord = words[Math.floor(Math.random() * words.length)];
+      document.getElementById("word").textContent = currentWord.jp;
+      document.getElementById("input").value = "";
+      document.getElementById("message").textContent = "Type the Romaji for the Japanese word you see!";
+      document.getElementById("input").focus();
+    }
+
+    function checkAnswer() {
+      const input = document.getElementById("input").value.trim().toLowerCase();
+      if (input === currentWord.romaji) {
+        score++;
+        document.getElementById("message").textContent = "✅ Correct! Well done!";
+      } else {
+        document.getElementById("message").textContent = `❌ Oops! Correct: ${currentWord.romaji}`;
+      }
+      document.getElementById("score").textContent = "Score: " + score;
+      setTimeout(nextWord, 1500);
+    }
+
+    document.getElementById("input").addEventListener("keydown", e => {
+      if (e.key === "Enter") checkAnswer();
+    });
+
+    nextWord();
+  </script>
+</body>
+</html>
