@@ -18,6 +18,7 @@
       padding: 10px;
     }
     h1 { font-size: 1.5em; margin-bottom: 10px; }
+    h2 { margin: 5px 0; }
     #message { margin: 10px; font-size: 1.2em; }
     input { 
       padding: 12px; 
@@ -44,24 +45,33 @@
 </head>
 <body>
   <h1>Japanese Listening Typing Trainer</h1>
-  <p id="message">🎧 Listen to the audio and type in Romaji!</p>
 
-  <button onclick="playAudio()">▶️ Play Audio</button>
-  <input type="text" id="input" placeholder="Type in Romaji">
-  <button onclick="checkAnswer()">Check</button>
+  <!-- 名前表示 -->
+  <h2 id="playerName"></h2>
 
-  <div id="score">Score: 0</div>
+  <!-- 名前入力画面 -->
+  <div id="nameInputContainer">
+    <p>Please enter your name to start:</p>
+    <input type="text" id="nameInput" placeholder="Your name">
+    <button onclick="startGame()">Start</button>
+  </div>
+
+  <!-- ゲーム画面 -->
+  <div id="gameContainer" style="display:none;">
+    <p id="message">🎧 Listen to the audio and type in Romaji!</p>
+    <button onclick="playAudio()">▶️ Play Audio</button>
+    <input type="text" id="input" placeholder="Type in Romaji">
+    <button onclick="checkAnswer()">Check</button>
+    <div id="score">Score: 0</div>
+  </div>
 
   <script>
-    // 音声ファイルと答えのペア
     const exercises = [
       { file: "listening_data/Konnichiwa.m4a", answer: "konnichiwa" },
       { file: "listening_data/Konbanwa.m4a", answer: "konbanwa" },
       { file: "listening_data/Sayounara.m4a", answer: "sayounara" },
       { file: "listening_data/Arigatou.m4a", answer: "arigatou" },
       { file: "listening_data/Mataashita.m4a", answer: "mataashita" }
-      // { file: "Arigatou.m4a", answer: "arigatou" },
-      // { file: "Sayounara.m4a", answer: "sayounara" }
     ];
 
     let current = null;
@@ -92,12 +102,28 @@
       setTimeout(pickRandomExercise, 1500);
     }
 
-    document.getElementById("input").addEventListener("keydown", e => {
-      if (e.key === "Enter") checkAnswer();
-    });
+    function startGame() {
+      const name = document.getElementById("nameInput").value.trim();
+      if (!name) {
+        alert("Please enter your name!");
+        return;
+      }
+      // 名前入力画面を非表示、ゲーム画面を表示
+      document.getElementById("nameInputContainer").style.display = "none";
+      document.getElementById("gameContainer").style.display = "block";
 
-    // 初回問題セット
-    pickRandomExercise();
+      // 名前を表示
+      document.getElementById("playerName").textContent = `${name}さん`;
+
+      // Enterキーでチェック
+      document.getElementById("input").addEventListener("keydown", e => {
+        if (e.key === "Enter") checkAnswer();
+      });
+
+      alert(`Welcome, ${name}! Let's start typing.`);
+      pickRandomExercise();
+    }
   </script>
 </body>
 </html>
+
