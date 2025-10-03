@@ -172,6 +172,7 @@
 
     let currentWord = {};
     let score = 0;
+    let isChecking = false;
 
   function nextWord() {
     currentWord = words[Math.floor(Math.random() * words.length)];
@@ -179,9 +180,14 @@
     document.getElementById("input").value = "";
     document.getElementById("message").textContent = "Type the Romaji for the Japanese word you see!";
     document.getElementById("input").focus();
+    isChecking = false;
   }
 
   function checkAnswer() {
+
+    if (isChecking) return;
+    isChecking = true; 
+
     const input = document.getElementById("input").value.trim().toLowerCase();
     if (input === currentWord.romaji) {
       score++;
@@ -202,6 +208,7 @@
     document.getElementById("nameInputContainer").style.display = "none";
     document.getElementById("gameContainer").style.display = "block";
     document.getElementById("playerName").textContent = `${name} さん`;
+
     document.getElementById("input").addEventListener("keydown", e => {
       if (e.key === "Enter") checkAnswer();
     });

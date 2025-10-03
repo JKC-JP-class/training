@@ -76,12 +76,15 @@
 
     let current = null;
     let score = 0;
+    let isChecking = false;
+
 
     function pickRandomExercise() {
       current = exercises[Math.floor(Math.random() * exercises.length)];
       document.getElementById("input").value = "";
       document.getElementById("message").textContent = "🎧 Listen to the audio and type in Romaji!";
       document.getElementById("input").focus();
+      isChecking = false;
     }
 
     function playAudio() {
@@ -91,6 +94,10 @@
     }
 
     function checkAnswer() {
+      
+      if (isChecking) return;
+      isChecking = true; 
+
       const input = document.getElementById("input").value.trim().toLowerCase();
       if (input === current.answer) {
         score++;
