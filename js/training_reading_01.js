@@ -36,7 +36,7 @@ currentWord = shuffledWords[wordIndex];
 wordIndex++;
 
 // 表示を更新
-document.getElementById("word").textContent = currentWord.jp;
+document.getElementById("word").textContent = currentWord.question;
 document.getElementById("input").value = "";
 document.getElementById("message").textContent =
     "Type English for the Japanese word you see!";
@@ -53,7 +53,7 @@ function checkAnswer() {
     isChecking = true; 
 
     const input = document.getElementById("input").value.trim().toLowerCase();
-    if (input === currentWord.english) {
+    if (input === currentWord.answer) {
 
     score++;
     document.getElementById("message").textContent = "✅ Correct! Well done!";
@@ -63,7 +63,7 @@ function checkAnswer() {
     } else {
 
     document.getElementById("correction").textContent = `❌ Oops! Let's watch out the answer!`;
-    document.getElementById("correct_word").textContent = `${currentWord.english}`;
+    document.getElementById("correct_word").textContent = `${currentWord.answer}`;
     setTimeout(nextWord, 4000);
 
     }
