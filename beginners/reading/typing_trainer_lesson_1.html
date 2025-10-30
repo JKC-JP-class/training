@@ -21,7 +21,7 @@
     #word { font-size: 50px; font-weight: bold; margin: 20px; }
     #message { margin: 10px; font-size: 1.2em; }
     #correction { margin: 10px; font-size: 1.2em; }
-    #correct_word { margin: 10px; font-size: 1.2em; }
+    #correct_word { margin: 10px; font-size: 2.5em; color: red; }
     input { 
       padding: 12px; 
       font-size: 1.2em; 
@@ -106,6 +106,8 @@
       document.getElementById("word").textContent = currentWord.jp;
       document.getElementById("input").value = "";
       document.getElementById("message").textContent = "Type English for the Japanese word you see!";
+      document.getElementById("correction").textContent = "";
+      document.getElementById("correct_word").textContent = "";
       document.getElementById("input").focus();
       isChecking = false;
     }
@@ -125,7 +127,7 @@
 
       } else {
 
-        document.getElementById("correction").textContent = `❌ Oops! Let's watch out!`;
+        document.getElementById("correction").textContent = `❌ Oops! Let's watch out the answer!`;
         document.getElementById("correct_word").textContent = `${currentWord.english}`;
         setTimeout(nextWord, 3000);
 
