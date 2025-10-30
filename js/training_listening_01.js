@@ -6,7 +6,8 @@ let isChecking = false;
 function pickRandomExercise() {
     current = datas[Math.floor(Math.random() * datas.length)];
     document.getElementById("input").value = "";
-    document.getElementById("correct_word").value = "";
+    document.getElementById("correction").textContent = "";
+    document.getElementById("correct_word").textContent = "";
     document.getElementById("input").focus();
     isChecking = false;
 }
