@@ -24,13 +24,20 @@ function checkAnswer() {
 
     const input = document.getElementById("input").value.trim().toLowerCase();
     if (input === current.answer) {
-    score++;
-    document.getElementById("message").textContent = "✅ Correct! Well done!";
+
+        score++;
+        document.getElementById("correction").textContent = "✅ Correct! Well done!";
+        document.getElementById("score").textContent = "Score: " + score;
+        setTimeout(pickRandomExercise, 1500);
+
     } else {
-    document.getElementById("message").textContent = `❌ Oops! Correct: ${current.answer}`;
+
+        document.getElementById("correction").textContent = `❌ Oops! Let's watch out the answer!`;
+        document.getElementById("correct_word").textContent = `${current.answer}`;
+        setTimeout(pickRandomExercise, 3000);
+
     }
-    document.getElementById("score").textContent = "Score: " + score;
-    setTimeout(pickRandomExercise, 1500);
+   
 }
 
 function startGame() {

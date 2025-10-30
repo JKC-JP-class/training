@@ -47,12 +47,6 @@ document.getElementById("input").focus();
 isChecking = false;
 }
 
-function playAudio() {
-    if (!current) pickRandomExercise();
-    const audio = new Audio(current.file);
-    audio.play();
-}
-
 function checkAnswer() {
     
     if (isChecking) return;

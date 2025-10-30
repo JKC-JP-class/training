@@ -1,4 +1,4 @@
-const words = [
+const datas = [
     { file: "listening_data/Konnichiwa.m4a", answer: "konnichiwa" },
     { file: "listening_data/Konbanwa.m4a", answer: "konbanwa" },
     { file: "listening_data/Sayounara.m4a", answer: "sayounara" },
