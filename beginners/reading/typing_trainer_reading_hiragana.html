@@ -4,44 +4,10 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Japanese Typing Trainer (Romaji)</title>
-  <style>
-    body { 
-      font-family: sans-serif; 
-      text-align: center; 
-      background: linear-gradient(to right, #fbc2eb, #a6c1ee); 
-      height: 100vh; 
-      margin: 0;
-      display: flex; 
-      flex-direction: column; 
-      justify-content: center; 
-      align-items: center; 
-      padding: 10px;
-    }
-    h1 { font-size: 1.5em; margin-bottom: 10px; }
-    #word { font-size: 100px; font-weight: bold; margin: 20px; }
-    #message { margin: 10px; font-size: 1.2em; }
-    input { 
-      padding: 12px; 
-      font-size: 1.2em; 
-      width: 80%; 
-      max-width: 300px; 
-      border-radius: 8px;
-      border: 1px solid #ccc;
-      text-align: center;
-    }
-    button { 
-      margin-top: 12px; 
-      padding: 12px 20px; 
-      font-size: 1.2em; 
-      border: none; 
-      border-radius: 8px;
-      background: #4a6cf7; 
-      color: white;
-      width: 80%;
-      max-width: 300px;
-    }
-    #score { margin-top: 20px; font-size: 1.5em; }
-  </style>
+  <link rel="stylesheet" href="https://jkc-jp-class.github.io/training/css/reading_01.css">
+  <script src="https://jkc-jp-class.github.io/training/js/word_beginners_lesson_1.js"></script>
+  <script src="https://jkc-jp-class.github.io/training/js/training_reading_01.js"></script>
+
 </head>
 <h1>Japanese Typing Trainer (Romaji)</h1>
 <h2 id="playerName" style="margin:5px 0;"></h2>
@@ -56,132 +22,13 @@
   <!-- ゲーム -->
   <div id="gameContainer" style="display:none;">
     <p id="message">Type the Romaji for the Japanese word you see!</p>
-    <div id="word"></div>
+    <p id="correction"></p>
+    <div id="word_hiragana"></div>
+    <p id="correct_word"></p>
     <input type="text" id="input" placeholder="Type in Romaji">
     <button onclick="checkAnswer()">Check</button>
     <div id="score">Score: 0</div>
   </div>
 
-  <script>
-    const words = [
-    { jp: "あ", romaji: "a" },
-    { jp: "い", romaji: "i" },
-    { jp: "う", romaji: "u" },
-    { jp: "え", romaji: "e" },
-    { jp: "お", romaji: "o" },
-    { jp: "か", romaji: "ka" },
-    { jp: "き", romaji: "ki" },
-    { jp: "く", romaji: "ku" },
-    { jp: "け", romaji: "ke" },
-    { jp: "こ", romaji: "ko" },
-    { jp: "さ", romaji: "sa" },
-    { jp: "し", romaji: "shi" },
-    { jp: "す", romaji: "su" },
-    { jp: "せ", romaji: "se" },
-    { jp: "そ", romaji: "so" },
-    { jp: "た", romaji: "ta" },
-    { jp: "ち", romaji: "chi" },
-    { jp: "つ", romaji: "tsu" },
-    { jp: "て", romaji: "te" },
-    { jp: "と", romaji: "to" },
-    { jp: "な", romaji: "na" },
-    { jp: "に", romaji: "ni" },
-    { jp: "ぬ", romaji: "nu" },
-    { jp: "ね", romaji: "ne" },
-    { jp: "の", romaji: "no" },
-    { jp: "は", romaji: "ha" },
-    { jp: "ひ", romaji: "hi" },
-    { jp: "ふ", romaji: "fu" },
-    { jp: "へ", romaji: "he" },
-    { jp: "ほ", romaji: "ho" },
-    { jp: "ま", romaji: "ma" },
-    { jp: "み", romaji: "mi" },
-    { jp: "む", romaji: "mu" },
-    { jp: "め", romaji: "me" },
-    { jp: "も", romaji: "mo" },
-    { jp: "や", romaji: "ya" },
-    { jp: "ゆ", romaji: "yu" },
-    { jp: "よ", romaji: "yo" },
-    { jp: "ら", romaji: "ra" },
-    { jp: "り", romaji: "ri" },
-    { jp: "る", romaji: "ru" },
-    { jp: "れ", romaji: "re" },
-    { jp: "ろ", romaji: "ro" },
-    { jp: "わ", romaji: "wa" },
-    { jp: "を", romaji: "wo" },
-    { jp: "ん", romaji: "nn" },
-    { jp: "が", romaji: "ga" },
-    { jp: "ぎ", romaji: "gi" },
-    { jp: "ぐ", romaji: "gu" },
-    { jp: "げ", romaji: "ge" },
-    { jp: "ご", romaji: "go" },
-    { jp: "ざ", romaji: "za" },
-    { jp: "じ", romaji: "ji" },
-    { jp: "ず", romaji: "zu" },
-    { jp: "ぜ", romaji: "ze" },
-    { jp: "ぞ", romaji: "zo" },
-    { jp: "だ", romaji: "da" },
-    { jp: "ぢ", romaji: "ji" },
-    { jp: "づ", romaji: "zu" },
-    { jp: "で", romaji: "de" },
-    { jp: "ど", romaji: "do" },
-    { jp: "ば", romaji: "ba" },
-    { jp: "び", romaji: "bi" },
-    { jp: "ぶ", romaji: "bu" },
-    { jp: "べ", romaji: "be" },
-    { jp: "ぼ", romaji: "bo" },
-    { jp: "ぱ", romaji: "pa" },
-    { jp: "ぴ", romaji: "pi" },
-    { jp: "ぷ", romaji: "pu" },
-    { jp: "ぺ", romaji: "pe" },
-    { jp: "ぽ", romaji: "po" },
-    ];
-
-    let currentWord = {};
-    let score = 0;
-    let isChecking = false;
-
-  function nextWord() {
-    currentWord = words[Math.floor(Math.random() * words.length)];
-    document.getElementById("word").textContent = currentWord.jp;
-    document.getElementById("input").value = "";
-    document.getElementById("message").textContent = "Type the Romaji for the Japanese word you see!";
-    document.getElementById("input").focus();
-    isChecking = false;
-  }
-
-  function checkAnswer() {
-      
-    if (isChecking) return;
-      isChecking = true; 
-
-    const input = document.getElementById("input").value.trim().toLowerCase();
-    if (input === currentWord.romaji) {
-      score++;
-      document.getElementById("message").textContent = "✅ Correct! Well done!";
-    } else {
-      document.getElementById("message").textContent = `❌ Oops! Correct: ${currentWord.romaji}`;
-    }
-    document.getElementById("score").textContent = "Score: " + score;
-    setTimeout(nextWord, 1500);
-  }
-
-  function startGame() {
-    const name = document.getElementById("nameInput").value.trim();
-    if (!name) {
-      alert("Please enter your name!");
-      return;
-    }
-    document.getElementById("nameInputContainer").style.display = "none";
-    document.getElementById("gameContainer").style.display = "block";
-    document.getElementById("playerName").textContent = `${name} さん`;
-    document.getElementById("input").addEventListener("keydown", e => {
-      if (e.key === "Enter") checkAnswer();
-    });
-
-    nextWord();
-  }
-
-</script>
 </body>
 </html>

@@ -1,5 +1,5 @@
 const words = [
-    { jp: "はじめまして", english: "Nice to see you" },
+    { jp: "はじめまして", english: "nice to see you" },
     { jp: "わたし", english: "I" },
     { jp: "おねがいします", english: "please" },
     { jp: "にほんご", english: "japanese" },
@@ -9,7 +9,7 @@ const words = [
     { jp: "きました", english: "came" },
     { jp: "はい", english: "yes" },
     { jp: "いいえ", english: "no" },
-    { jp: "そうです", english: "that is correct(that's right)" },
+    { jp: "そうです", english: "that is correct" },
     { jp: "おしごと（しごと）", english: "work" },
     { jp: "えいご", english: "english" },
     { jp: "きょうし", english: "teacher" },
