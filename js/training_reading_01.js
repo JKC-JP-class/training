@@ -1,16 +1,50 @@
-let currentWord = {};
-let score = 0;
-let isChecking = false;
+function shuffle(array) {
+let currentIndex = array.length, randomIndex;
 
+while (currentIndex != 0) {
+    randomIndex = Math.floor(Math.random() * currentIndex);
+    currentIndex--;
+    // 要素を入れ替え
+    [array[currentIndex], array[randomIndex]] = [
+    array[randomIndex], array[currentIndex]
+    ];
+}
+return array;
+}
+
+// ==========================
+// 初期設定
+// ==========================
+let shuffledWords = shuffle([...words]); // シャッフルしたコピー
+let wordIndex = 0; // 現在のインデックス
+let currentWord = null;
+let isChecking = false;
+let score = 0;
+
+// ==========================
+// 次の単語を表示する関数
+// ==========================
 function nextWord() {
-    currentWord = words[Math.floor(Math.random() * words.length)];
-    document.getElementById("word").textContent = currentWord.jp;
-    document.getElementById("input").value = "";
-    document.getElementById("message").textContent = "Type English for the Japanese word you see!";
-    document.getElementById("correction").textContent = "";
-    document.getElementById("correct_word").textContent = "";
-    document.getElementById("input").focus();
-    isChecking = false;
+// 全部出し切ったら再シャッフル
+if (wordIndex >= shuffledWords.length) {
+    shuffledWords = shuffle([...words]);
+    wordIndex = 0;
+}
+
+// 現在の単語を取得
+currentWord = shuffledWords[wordIndex];
+wordIndex++;
+
+// 表示を更新
+document.getElementById("word").textContent = currentWord.jp;
+document.getElementById("input").value = "";
+document.getElementById("message").textContent =
+    "Type English for the Japanese word you see!";
+document.getElementById("correction").textContent = "";
+document.getElementById("correct_word").textContent = "";
+document.getElementById("input").focus();
+
+isChecking = false;
 }
 
 function checkAnswer() {
