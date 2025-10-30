@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+  <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Japanese Typing Trainer (Romaji)</title>
+  <title>Japanese Typing Trainer - Lesson1 </title>
   <style>
     body { 
       font-family: sans-serif; 
@@ -18,7 +18,7 @@
       padding: 10px;
     }
     h1 { font-size: 1.5em; margin-bottom: 10px; }
-    #word { font-size: 2em; margin: 20px; }
+    #word { font-size: 100px; font-weight: bold; margin: 20px; }
     #message { margin: 10px; font-size: 1.2em; }
     input { 
       padding: 12px; 
@@ -43,13 +43,24 @@
     #score { margin-top: 20px; font-size: 1.5em; }
   </style>
 </head>
-<body>
-  <h1>Japanese Typing Trainer - lesson 1</h1>
-  <p id="message">Type the English for the Japanese word you see!</p>
-  <div id="word"></div>
-  <input type="text" id="input" placeholder="Type in Romaji">
-  <button onclick="checkAnswer()">Check</button>
-  <div id="score">Score: 0</div>
+<h1>Japanese Typing Trainer - Lesson1 </h1>
+<h2 id="playerName" style="margin:5px 0;"></h2>
+
+  <!-- 名前入力 -->
+  <div id="nameInputContainer">
+    <p>Please enter your name to start:</p>
+    <input type="text" id="nameInput" placeholder="Your name">
+    <button onclick="startGame()">Start</button>
+  </div>
+
+  <!-- ゲーム -->
+  <div id="gameContainer" style="display:none;">
+    <p id="message">Type English for the Japanese word you see!</p>
+    <div id="word"></div>
+    <input type="text" id="input" placeholder="Type in English">
+    <button onclick="checkAnswer()">Check</button>
+    <div id="score">Score: 0</div>
+  </div>
 
   <script>
     const words = [
@@ -65,7 +76,7 @@
       { jp: "いいえ", english: "no" },
       { jp: "そうです", english: "that is correct(that's right)" },
       { jp: "おしごと（しごと）", english: "work" },
-      { jp: "えいご", english: "eigo" },
+      { jp: "えいご", english: "english" },
       { jp: "きょうし", english: "teacher" },
       { jp: "も", english: "too" },
       { jp: "びょういん", english: "hospital" },
@@ -84,16 +95,22 @@
 
     let currentWord = {};
     let score = 0;
+    let isChecking = false;
 
     function nextWord() {
       currentWord = words[Math.floor(Math.random() * words.length)];
       document.getElementById("word").textContent = currentWord.jp;
       document.getElementById("input").value = "";
-      document.getElementById("message").textContent = "Type the Romaji for the Japanese word you see!";
+      document.getElementById("message").textContent = "Type English for the Japanese word you see!";
       document.getElementById("input").focus();
+      isChecking = false;
     }
 
     function checkAnswer() {
+        
+      if (isChecking) return;
+        isChecking = true; 
+
       const input = document.getElementById("input").value.trim().toLowerCase();
       if (input === currentWord.english) {
         score++;
@@ -102,14 +119,24 @@
         document.getElementById("message").textContent = `❌ Oops! Correct: ${currentWord.english}`;
       }
       document.getElementById("score").textContent = "Score: " + score;
-      setTimeout(nextWord, 1500);
+      setTimeout(nextWord, 3000);
     }
 
-    document.getElementById("input").addEventListener("keydown", e => {
-      if (e.key === "Enter") checkAnswer();
-    });
+    function startGame() {
+      const name = document.getElementById("nameInput").value.trim();
+      if (!name) {
+        alert("Please enter your name!");
+        return;
+      }
+      document.getElementById("nameInputContainer").style.display = "none";
+      document.getElementById("gameContainer").style.display = "block";
+      document.getElementById("playerName").textContent = `${name} さん`;
+      document.getElementById("input").addEventListener("keydown", e => {
+        if (e.key === "Enter") checkAnswer();
+      });
 
-    nextWord();
+      nextWord();
+    }
   </script>
 </body>
 </html>
