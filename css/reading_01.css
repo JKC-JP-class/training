@@ -35,4 +35,15 @@ body {
     width: 80%;
     max-width: 300px;
   }
+  #button_audio { 
+    margin-top: 12px; 
+    padding: 12px 20px; 
+    font-size: 1.2em; 
+    border: none; 
+    border-radius: 8px;
+    background: #4a6cf7; 
+    color: white;
+    width: 80%;
+    max-width: 300px;
+  }
   #score { margin-top: 20px; font-size: 1.5em; }
