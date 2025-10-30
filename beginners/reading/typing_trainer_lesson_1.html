@@ -4,46 +4,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Japanese Typing Trainer - Lesson1 </title>
-  <style>
-    body { 
-      font-family: sans-serif; 
-      text-align: center; 
-      background: linear-gradient(to right, #fbc2eb, #a6c1ee); 
-      height: 100vh; 
-      margin: 0;
-      display: flex; 
-      flex-direction: column; 
-      justify-content: center; 
-      align-items: center; 
-      padding: 10px;
-    }
-    h1 { font-size: 1.5em; margin-bottom: 10px; }
-    #word { font-size: 50px; font-weight: bold; margin: 20px; }
-    #message { margin: 10px; font-size: 1.2em; }
-    #correction { margin: 10px; font-size: 1.2em; }
-    #correct_word { margin: 10px; font-size: 2.5em; color: red; }
-    input { 
-      padding: 12px; 
-      font-size: 1.2em; 
-      width: 80%; 
-      max-width: 300px; 
-      border-radius: 8px;
-      border: 1px solid #ccc;
-      text-align: center;
-    }
-    button { 
-      margin-top: 12px; 
-      padding: 12px 20px; 
-      font-size: 1.2em; 
-      border: none; 
-      border-radius: 8px;
-      background: #4a6cf7; 
-      color: white;
-      width: 80%;
-      max-width: 300px;
-    }
-    #score { margin-top: 20px; font-size: 1.5em; }
-  </style>
+  <link rel="stylesheet" href="https://jkc-jp-class.github.io/training/css/reading_01.css">
+  <script src="https://jkc-jp-class.github.io/training/js/word_beginners_lesson_1.js"></script>
+  <script src="https://jkc-jp-class.github.io/training/js/training_reading_01.js"></script>
 </head>
 <h1>Japanese Typing Trainer - Lesson1 </h1>
 <h2 id="playerName" style="margin:5px 0;"></h2>
@@ -60,96 +23,11 @@
     <p id="message">Type English for the Japanese word you see!</p>
     <p id="correction"></p>
     <div id="word"></div>
-    <p id="correct_word"></p>
-    <input type="text" id="input" placeholder="Type in English">
-    <button onclick="checkAnswer()">Check</button>
+      <p id="correct_word"></p>
+      <input type="text" id="input" placeholder="Type in English">
+      <button onclick="checkAnswer()">Check</button>
     <div id="score">Score: 0</div>
   </div>
 
-  <script>
-    const words = [
-      { jp: "はじめまして", english: "Nice to see you" },
-      { jp: "わたし", english: "I" },
-      { jp: "おねがいします", english: "Please" },
-      { jp: "にほんご", english: "japanese" },
-      { jp: "がっこう", english: "school" },
-      { jp: "がくせい", english: "student" },
-      { jp: "から", english: "from" },
-      { jp: "きました", english: "came" },
-      { jp: "はい", english: "yes" },
-      { jp: "いいえ", english: "no" },
-      { jp: "そうです", english: "that is correct(that's right)" },
-      { jp: "おしごと（しごと）", english: "work" },
-      { jp: "えいご", english: "english" },
-      { jp: "きょうし", english: "teacher" },
-      { jp: "も", english: "too" },
-      { jp: "びょういん", english: "hospital" },
-      { jp: "だいがく", english: "university" },
-      { jp: "かいしゃいん", english: "company employee" },
-      { jp: "けんしゅうせい", english: "trainee" },
-      { jp: "りょこう", english: "travel" },
-      { jp: "は", english: "is" },
-      { jp: "の", english: "of" },
-      { jp: "すみません", english: "sorry" },
-      { jp: "もういちど", english: "one more time" },
-      { jp: "えーと", english: "well" },
-      { jp: "いま", english: "now" },
-      { jp: "ほんと", english: "really" },
-    ];
-
-    let currentWord = {};
-    let score = 0;
-    let isChecking = false;
-
-    function nextWord() {
-      currentWord = words[Math.floor(Math.random() * words.length)];
-      document.getElementById("word").textContent = currentWord.jp;
-      document.getElementById("input").value = "";
-      document.getElementById("message").textContent = "Type English for the Japanese word you see!";
-      document.getElementById("correction").textContent = "";
-      document.getElementById("correct_word").textContent = "";
-      document.getElementById("input").focus();
-      isChecking = false;
-    }
-
-    function checkAnswer() {
-        
-      if (isChecking) return;
-        isChecking = true; 
-
-      const input = document.getElementById("input").value.trim().toLowerCase();
-      if (input === currentWord.english) {
-
-        score++;
-        document.getElementById("message").textContent = "✅ Correct! Well done!";
-        document.getElementById("score").textContent = "Score: " + score;
-        setTimeout(nextWord, 1500);
-
-      } else {
-
-        document.getElementById("correction").textContent = `❌ Oops! Let's watch out the answer!`;
-        document.getElementById("correct_word").textContent = `${currentWord.english}`;
-        setTimeout(nextWord, 4500);
-
-      }
-    
-    }
-
-    function startGame() {
-      const name = document.getElementById("nameInput").value.trim();
-      if (!name) {
-        alert("Please enter your name!");
-        return;
-      }
-      document.getElementById("nameInputContainer").style.display = "none";
-      document.getElementById("gameContainer").style.display = "block";
-      document.getElementById("playerName").textContent = `${name} さん`;
-      document.getElementById("input").addEventListener("keydown", e => {
-        if (e.key === "Enter") checkAnswer();
-      });
-
-      nextWord();
-    }
-  </script>
 </body>
 </html>
