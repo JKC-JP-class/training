@@ -6,7 +6,7 @@ let isChecking = false;
 function pickRandomExercise() {
     current = datas[Math.floor(Math.random() * datas.length)];
     document.getElementById("input").value = "";
-    document.getElementById("message").textContent = "🎧 Listen to the audio and type in Romaji!";
+    document.getElementById("correct_word").value = "";
     document.getElementById("input").focus();
     isChecking = false;
 }
