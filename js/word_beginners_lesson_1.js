@@ -11,7 +11,7 @@ const words = [
     { question: "いいえ", answer: "no" },
     { question: "そうです", answer: "that is correct" },
     { question: "おしごと（しごと）", answer: "work" },
-    { question: "えいご", answer: "answer" },
+    { question: "えいご", answer: "english" },
     { question: "きょうし", answer: "teacher" },
     { question: "も", answer: "too" },
     { question: "びょういん", answer: "hospital" },
