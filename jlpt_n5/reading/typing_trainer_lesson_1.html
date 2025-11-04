@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+  <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Japanese Typing Trainer - Katakana</title>
+  <title>Japanese Typing Trainer - Lesson1 </title>
   <link rel="stylesheet" href="https://jkc-jp-class.github.io/training/css/reading_01.css">
-  <script src="https://jkc-jp-class.github.io/training/js/word_jlpt_n5_reading_katakana.js"></script>
+  <script src="https://jkc-jp-class.github.io/training/js/word_jlpt_n5_lesson_1.js"></script>
   <script src="https://jkc-jp-class.github.io/training/js/training_reading_01.js"></script>
 </head>
-<h1>Japanese Typing Trainer - Katakana</h1>
+<h1>Japanese Typing Trainer - Lesson1 </h1>
 <h2 id="playerName" style="margin:5px 0;"></h2>
 
   <!-- 名前入力 -->
@@ -20,11 +20,11 @@
 
   <!-- ゲーム -->
   <div id="gameContainer" style="display:none;">
-    <p id="message">Type the Romaji for the Japanese word you see!</p>
+    <p id="message">Type English for the Japanese word you see!</p>
     <p id="correction"></p>
-    <div id="word" style="font-size: 75px;"></div>
+    <div id="word"></div>
     <p id="correct_word"></p>
-    <input type="text" id="input" placeholder="Type in Romaji">
+    <input type="text" id="input" placeholder="Type in English">
     <button onclick="checkAnswer()">Check</button>
     <div id="score">Score: 0</div>
   </div>
