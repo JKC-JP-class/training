@@ -10,6 +10,7 @@ const words = [
     { question: "こうえん", answer: "park" },
     { question: "こうばん", answer: "police station" },
     { question: "これ", answer: "this" },
+    { question: "あれ", answer: "that" },
     { question: "こんしゅう", answer: "this week" },
     { question: "しごと", answer: "work" },
     { question: "それ", answer: "that" },
