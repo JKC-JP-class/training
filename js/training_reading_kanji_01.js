@@ -55,7 +55,7 @@ function checkAnswer() {
     const input = document.getElementById("input").value.trim().toLowerCase();
   
     // 正解判定（配列のどれかに一致すればOK）
-    const isCorrect = currentWord.answers
+    const isCorrect = currentWord.answer
       .map(a => a.toLowerCase())
       .includes(input);
   
