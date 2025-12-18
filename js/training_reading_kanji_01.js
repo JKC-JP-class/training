@@ -39,7 +39,7 @@ wordIndex++;
 document.getElementById("word").textContent = currentWord.question;
 document.getElementById("input").value = "";
 document.getElementById("message").textContent =
-    "Type English for the Japanese word you see!";
+    "Type Romaji for the Kanji you see!";
 document.getElementById("correction").textContent = "";
 document.getElementById("correct_word").textContent = "";
 document.getElementById("input").focus();
