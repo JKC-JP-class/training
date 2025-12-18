@@ -71,7 +71,7 @@ function checkAnswer() {
       document.getElementById("correction").textContent =
         "❌ Oops! Let's watch out the answer!";
       document.getElementById("correct_word").textContent =
-        currentWord.answers.join(" / ");
+        currentWord.answer.join(" / ");
       setTimeout(nextWord, 4000);
   
     }
