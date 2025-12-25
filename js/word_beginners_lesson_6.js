@@ -1,10 +1,10 @@
 const words = [
     { question: "あさごはん", answer: "breakfast" },
     { question: "あたらしい", answer: "new" },
-    { question: "ありがとうございます。", answer: "Thank you very much" },
+    { question: "ありがとうございます。", answer: "thank you very much" },
     { question: "アルバイト", answer: "part time job" },
     { question: "いいですね。", answer: "sounds good" },
-    { question: "いいですよ。", answer: "OK" },
+    { question: "いいですよ。", answer: "ok" },
     { question: "いっしょに", answer: "together" },
     { question: "えいが", answer: "movie" },
     { question: "おはなみ", answer: "flower viewing" },
