@@ -43,8 +43,7 @@ function nextWord() {
   // 表示を更新
   document.getElementById("word").textContent = currentWord.question;
   document.getElementById("input").value = "";
-  document.getElementById("message").textContent =
-      "Type Romaji for the Kanji you see!";
+  document.getElementById("message").textContent = currentWord.message;
   document.getElementById("correction").textContent = "";
   document.getElementById("correct_word").textContent = "";
   document.getElementById("input").focus();
@@ -76,8 +75,8 @@ function checkAnswer() {
 
     document.getElementById("correction").textContent =
       "❌ Oops! Let's watch out the answer!";
-    document.getElementById("correct_word").textContent =
-      currentWord.answer.join(" / ");
+    document.getElementById("correct_word").innerHTML =
+      currentWord.answer.join("<br>");
     setTimeout(nextWord, 4000);
 
     

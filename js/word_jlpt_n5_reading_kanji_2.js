@@ -1,0 +1,17 @@
+const words = [
+    { question: "五", answer: ["go","itsu" ]},
+    { question: "東", answer: ["tou","higashi" ]},
+    { question: "四", answer: ["shi","yo","yon" ]},
+    { question: "今", answer: ["kon","ima","kin" ]},
+    { question: "九", answer: ["kyuu","kokono","ku" ]},
+    { question: "円", answer: ["en","maru" ]},
+    { question: "八", answer: ["hachi","ya","you" ]},
+    { question: "六", answer: ["roku","mu","mui" ]},
+    { question: "七", answer: ["shichi","nana","nano" ]},
+    { question: "北", answer: ["hoku","kita" ]},
+    { question: "名", answer: ["mei","na","myou" ]},
+    { question: "西", answer: ["sei","nishi","sai" ]},
+    { question: "南", answer: ["nan","minami","na" ]},
+    { question: "右", answer: ["u","migi","yuu" ]},
+    { question: "左", answer: ["sa","hidari","sha" ]},
+];

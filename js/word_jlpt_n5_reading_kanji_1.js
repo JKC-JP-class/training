@@ -19,4 +19,9 @@ const words = [
     { question: "分", answer: ["fun","bun","wa" ]},
     { question: "後", answer: ["go","ato","kou","ushi" ]},
     { question: "前", answer: ["mae","zen" ]},
+    { question: "火", answer: ["ka","hi" ]},
+    { question: "水", answer: ["sui","mizu" ]},
+    { question: "木", answer: ["moku","ki" ]},
+    { question: "金", answer: ["kin","kane" ]},
+    { question: "土", answer: ["do","tsuchi" ]},
 ];
