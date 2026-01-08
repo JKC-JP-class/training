@@ -63,6 +63,7 @@ function showQuestion() {
     document.getElementById("word").textContent = currentWord.question;
     document.getElementById("message").textContent =
       "What is the meaning of this adjective?";
+    document.getElementById("input").placeholder = "Type the meaning in English";
 
   } else {
 
@@ -70,6 +71,7 @@ function showQuestion() {
     document.getElementById("word").textContent = currentWord.question;
     document.getElementById("message").textContent =
       currentWord.message;
+    document.getElementById("input").placeholder = "Type the meaning in Japanese";
 
   }
 
@@ -115,9 +117,9 @@ function checkAnswer() {
 
     if (questionStep === 0) {
       questionStep = 1;
-      setTimeout(showQuestion, 2000);
+      setTimeout(showQuestion, 4000);
     } else {
-      setTimeout(nextWord, 2500);
+      setTimeout(nextWord, 4000);
     }
 
   } else {
@@ -127,7 +129,7 @@ function checkAnswer() {
 
     if (questionStep === 0) {
       questionStep = 1;
-      setTimeout(showQuestion, 4000);
+      setTimeout(showQuestion, 8000);
     } else {
       setTimeout(nextWord, 8000);
     }
