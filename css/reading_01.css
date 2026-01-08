@@ -14,7 +14,7 @@ body {
   #word { font-size: 50px; font-weight: bold; margin: 20px; }
   #message { margin: 10px; font-size: 1.2em; }
   #correction { margin: 10px; font-size: 1.2em; }
-  #correct_word { margin: 10px; font-size: 2.5em; color: red; }
+  #correct_word { margin: 10px; font-size: 2.5em; }
   input { 
     padding: 12px; 
     font-size: 1.2em; 
