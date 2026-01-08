@@ -1,5 +1,5 @@
 // ===========Feature===============
-// - 1 Question 1 answer
+// - 2 Question 2 answer
 // - Multi answer correction
 // - Multi answer display (line break)
 // =================================
@@ -30,30 +30,50 @@ let wordIndex = 0; // 現在のインデックス
 let currentWord = null;
 let isChecking = false;
 let score = 0;
+let questionStep = 0;
 
 // ==========================
 // 次の単語を表示する関数
 // ==========================
+
 function nextWord() {
 
-  // 全部出し切ったら再シャッフル
   if (wordIndex >= shuffledWords.length) {
-      shuffledWords = shuffle([...words]);
-      wordIndex = 0;
+    shuffledWords = shuffle([...words]);
+    wordIndex = 0;
   }
 
-  // 現在の単語を取得
   currentWord = shuffledWords[wordIndex];
   wordIndex++;
 
-  // 表示を更新
-  document.getElementById("word").textContent = currentWord.question;
+  questionStep = 0; // ← ここが重要
+  showQuestion();
+
+}
+
+function showQuestion() {
+
   document.getElementById("input").value = "";
-  document.getElementById("message").textContent = currentWord.message;
   document.getElementById("correction").textContent = "";
   document.getElementById("correct_word").textContent = "";
-  document.getElementById("input").focus();
 
+  if (questionStep === 0) {
+
+    // 第1問：意味
+    document.getElementById("word").textContent = currentWord.question;
+    document.getElementById("message").textContent =
+      "What is the meaning of this adjective?";
+
+  } else {
+
+    // 第2問：形容詞変化
+    document.getElementById("word").textContent = currentWord.question;
+    document.getElementById("message").textContent =
+      currentWord.message;
+
+  }
+
+  document.getElementById("input").focus();
   isChecking = false;
 
 }
@@ -64,28 +84,53 @@ function checkAnswer() {
   isChecking = true;
 
   const input = document.getElementById("input").value.trim().toLowerCase();
+  let isCorrect = false;
+  let correctText = "";
 
-  // 正解判定（配列のどれかに一致すればOK）
-  const isCorrect = currentWord.answer
-    .map(a => a.toLowerCase())
-    .includes(input);
+  if (questionStep === 0) {
+    // ===== 第1問：意味（配列対応） =====
+    isCorrect = currentWord.meaning
+      .map(m => m.toLowerCase())
+      .includes(input);
+
+    correctText = currentWord.meaning.join("<br>");
+
+  } else {
+    // ===== 第2問：形容詞変化 =====
+    isCorrect = currentWord.answer
+      .map(a => a.toLowerCase())
+      .includes(input);
+
+    correctText = currentWord.answer.join("<br>");
+  }
+
+  // ===== 正解・不正解 共通処理 =====
+  document.getElementById("correct_word").innerHTML = correctText;
 
   if (isCorrect) {
 
     score++;
-    document.getElementById("message").textContent = "✅ Correct! Well done!";
     document.getElementById("score").textContent = "Score: " + score;
-    setTimeout(nextWord, 1500);
+    document.getElementById("message").textContent = "✅ Correct! Well done!";
+
+    if (questionStep === 0) {
+      questionStep = 1;
+      setTimeout(showQuestion, 2000);
+    } else {
+      setTimeout(nextWord, 2500);
+    }
 
   } else {
 
-    document.getElementById("correction").textContent =
+    document.getElementById("message").textContent =
       "❌ Oops! Let's watch out the answer!";
-    document.getElementById("correct_word").innerHTML =
-      currentWord.answer.join("<br>");
-    setTimeout(nextWord, 8000);
 
-    
+    if (questionStep === 0) {
+      questionStep = 1;
+      setTimeout(showQuestion, 4000);
+    } else {
+      setTimeout(nextWord, 8000);
+    }
   }
 }
 
