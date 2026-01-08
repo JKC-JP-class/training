@@ -55,6 +55,7 @@ function showQuestion() {
 
   document.getElementById("input").value = "";
   document.getElementById("correction").textContent = "";
+  document.getElementById("correction_mark").textContent = "";
   document.getElementById("correct_word").textContent = "";
 
   if (questionStep === 0) {
@@ -132,9 +133,9 @@ function checkAnswer() {
 
     if (questionStep === 0) {
       questionStep = 1;
-      setTimeout(showQuestion, 8000);
+      setTimeout(showQuestion, 4000);
     } else {
-      setTimeout(nextWord, 8000);
+      setTimeout(nextWord, 4000);
     }
   }
 }
