@@ -113,7 +113,8 @@ function checkAnswer() {
 
     score++;
     document.getElementById("score").textContent = "Score: " + score;
-    document.getElementById("message").textContent = "✅ Correct! Well done!";
+    document.getElementById("correction_mark").textContent = "✅";
+    document.getElementById("message").textContent = "Correct! Well done!";
 
     if (questionStep === 0) {
       questionStep = 1;
@@ -124,8 +125,10 @@ function checkAnswer() {
 
   } else {
 
+    document.getElementById("correction_mark").textContent =
+      "❌";
     document.getElementById("message").textContent =
-      "❌ Oops! Let's watch out the answer!";
+      "Oops! Let's watch out the answer!";
 
     if (questionStep === 0) {
       questionStep = 1;
