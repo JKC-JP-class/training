@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Japanese Typing Trainer - Vocabulary 7 </title>
+  <link rel="stylesheet" href="https://jkc-jp-class.github.io/training/css/reading_01.css">
+  <script src="https://jkc-jp-class.github.io/training/js/word_jlpt_n5_vocabulary_7.js"></script>
+  <script src="https://jkc-jp-class.github.io/training/js/training_reading_02.js"></script>
+</head>
+<h1>Japanese Typing Trainer - Vocabulary 7 </h1>
+<h2 id="playerName" style="margin:5px 0;"></h2>
+
+  <!-- 名前入力 -->
+  <div id="nameInputContainer">
+    <p>Please enter your name to start:</p>
+    <input type="text" id="nameInput" placeholder="Your name">
+    <button onclick="startGame()">Start</button>
+  </div>
+
+  <!-- ゲーム -->
+  <div id="gameContainer" style="display:none;">
+    <p id="message">Type English for the Japanese word you see!</p>
+    <p id="correction"></p>
+    <div id="word"></div>
+    <p id="correct_word"></p>
+    <input type="text" id="input" placeholder="Type in English">
+    <button onclick="checkAnswer()">Check</button>
+    <div id="score">Score: 0</div>
+  </div>
+
+</body>
+</html>
