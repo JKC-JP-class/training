@@ -1,0 +1,23 @@
+const words = [
+    { question: "うえ", answer: ["top","on","above" ]},
+    { question: "うしろ", answer: ["back, rear, behind","rear","behind" ]},
+    { question: "おかし", answer: ["snack","sweets" ]},
+    { question: "おとこ", answer: ["man" ]},
+    { question: "おとな", answer: ["adult" ]},
+    { question: "おんな", answer: ["woman" ]},
+    { question: "きた", answer: ["north" ]},
+    { question: "こども", answer: ["child" ]},
+    { question: "した", answer: ["under","below" ]},
+    { question: "となり", answer: ["next to" ]},
+    { question: "なか", answer: ["inside" ]},
+    { question: "〜など", answer: ["and so on" ]},
+    { question: "にし", answer: ["west" ]},
+    { question: "ひがし", answer: ["east" ]},
+    { question: "ひだり", answer: ["left" ]},
+    { question: "まえ", answer: ["front" ]},
+    { question: "みぎ", answer: ["right" ]},
+    { question: "みなみ", answer: ["south" ]},
+    { question: "むこう", answer: ["over there" ]},
+    { question: "よこ", answer: ["horizontal","beside","side" ]},
+];
+
