@@ -1,6 +1,6 @@
 const words = [
-    { question: "後", answer: ["go" ]},
-    { question: "前", answer: ["zen" ]},
+    { question: "後", answer: ["go","kou","ushi","ato" ]},
+    { question: "前", answer: ["zen","mae" ]},
     { question: "上", answer: ["jou","ue","kami","a","nobo" ]},
     { question: "子", answer: ["shi","ko" ]},
     { question: "下", answer: ["ka","ge","shita","shimo","sa" ]},
