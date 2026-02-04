@@ -1,0 +1,18 @@
+const words = [
+    { question: "生", answer: ["sei","shou","i","ha","nama" ]},
+    { question: "間", answer: ["kan","aida","ma","ai" ]},
+    { question: "学", answer: ["gaku","mana" ]},
+    { question: "高", answer: ["kou","taka" ]},
+    { question: "外", answer: ["gai","ge","soto","hoka","hazu" ]},
+    { question: "来", answer: ["rai","tai","ku","ki","ko" ]},
+    { question: "気", answer: ["ki","ke","iki" ]},
+    { question: "話", answer: ["wa","hana","hanashi" ]},
+    { question: "午", answer: ["go","uma" ]},
+    { question: "先", answer: ["sen","saki" ]},
+    { question: "電", answer: ["den" ]},
+    { question: "校", answer: ["kou" ]},
+    { question: "聞", answer: ["bun","mon","ki" ]},
+    { question: "食", answer: ["shoku","jiki","ku","ta" ]},
+    { question: "白", answer: ["haku","byaku","shiro" ]},
+    { question: "読", answer: ["doku","toku","tou","yo" ]},
+];
