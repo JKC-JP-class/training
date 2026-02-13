@@ -12,7 +12,7 @@ const words = [
     { question: "した（　）さがります\nwill go down", answer: ["へ" ]},
     { question: "いす の となり（　）あります\n(it is) next to the chair", answer: ["に" ]},
     { question: "かばん の なか（　）いれます\nwill put into the bag", answer: ["に" ]},
-    { question: "りょうり（）にがてです\nnot good at cooking", answer: ["は" ]},
+    { question: "りょうり（　）にがてです\nnot good at cooking", answer: ["が" ]},
     { question: "あかいテーブル（　）あります\nThere is red table", answer: ["が" ]},
     { question: "かわ（　）およぐ\nswim at the river", answer: ["を" ]},
     { question: "ふく（　）きる\nひだり", answer: ["を" ]},
